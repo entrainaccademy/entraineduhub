@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layers, Menu, X, ArrowRight, UtensilsCrossed, MonitorPlay, TrendingUp, Sparkles } from 'lucide-react';
+import { Layers, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 
 export const Navbar = ({ activeView, setActiveView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,10 +16,10 @@ export const Navbar = ({ activeView, setActiveView }) => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
-    { id: 'academy', label: 'Entrain Academy' },
-    { id: 'lab', label: 'Entrain Lab' },
-    { id: 'growth-lab', label: 'Entrain Growth Lab' },
-    { id: 'contact', label: 'Contact' },
+    // { id: 'academy', label: 'Entrain Academy' },
+    // { id: 'lab', label: 'Entrain Lab' },
+    // { id: 'growth-lab', label: 'Entrain Growth Lab' },
+    // { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (viewId) => {
@@ -31,48 +31,46 @@ export const Navbar = ({ activeView, setActiveView }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav py-3.5 shadow-2xl' : 'bg-transparent py-5'
+        isScrolled ? 'header-blur py-3.5 shadow-sm' : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
           {/* Logo */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 group text-left focus:outline-none"
+            className="flex items-center gap-3 text-left focus:outline-none group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0A756A] to-[#14B8A6] p-[1px] shadow-glow-primary">
-              <div className="w-full h-full bg-[#050816] rounded-[11px] flex items-center justify-center">
-                <Layers className="w-4 h-4 text-[#14B8A6]" />
-              </div>
+            <div className="w-8 h-8 rounded-lg bg-[#0A756A] flex items-center justify-center text-white">
+              <Layers className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-base tracking-wider text-white">ENTRAIN</span>
-                <span className="font-semibold text-[10px] px-1.5 py-0.5 rounded bg-[#0A756A]/20 text-[#14B8A6] border border-[#0A756A]/30">
+                <span className="font-bold text-base tracking-tight text-[#F8FAFC]">ENTRAIN</span>
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#171A1D] text-[#14B8A6] border border-white/10">
                   EDU HUB
                 </span>
               </div>
-              <span className="text-[9px] uppercase tracking-widest text-[#94A3B8] font-medium">
+              <span className="text-[10px] text-[#94A3B8] font-medium">
                 Parent Company
               </span>
             </div>
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-7">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-xs font-semibold transition-colors py-1 relative ${
-                  activeView === item.id ? 'text-[#14B8A6]' : 'text-[#94A3B8] hover:text-white'
+                className={`text-sm font-medium transition-colors py-1 relative ${
+                  activeView === item.id ? 'text-[#14B8A6]' : 'text-[#CBD5E1] hover:text-[#F8FAFC]'
                 }`}
               >
                 {item.label}
                 {activeView === item.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#14B8A6] rounded-full animate-in fade-in duration-200" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#14B8A6] rounded-full" />
                 )}
               </button>
             ))}
@@ -82,7 +80,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={() => handleNavClick('contact')}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#0A756A] to-[#14B8A6] text-white text-xs font-semibold hover:opacity-95 transition-all shadow-glow-primary flex items-center gap-1.5"
+              className="btn-primary text-xs flex items-center gap-1.5"
             >
               <span>Contact Us</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -92,7 +90,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-[#111827] border border-white/10 text-white"
+            className="lg:hidden p-2 rounded-lg bg-[#171A1D] border border-white/10 text-[#F8FAFC]"
             aria-label="Toggle navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -103,13 +101,13 @@ export const Navbar = ({ activeView, setActiveView }) => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0B1120] border-b border-white/10 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden bg-[#111315] border-b border-white/10 px-4 pt-3 pb-6 space-y-2 shadow-xl">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`w-full text-left text-xs font-semibold py-2.5 px-3 rounded-lg transition-colors flex items-center justify-between ${
-                activeView === item.id ? 'bg-[#0A756A]/20 text-[#14B8A6]' : 'text-[#94A3B8] hover:bg-white/5 hover:text-white'
+              className={`w-full text-left text-sm font-medium py-2.5 px-3 rounded-lg transition-colors flex items-center justify-between ${
+                activeView === item.id ? 'bg-[#0A756A]/20 text-[#14B8A6]' : 'text-[#CBD5E1] hover:bg-[#171A1D] hover:text-[#F8FAFC]'
               }`}
             >
               <span>{item.label}</span>
@@ -119,7 +117,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
           <div className="pt-2">
             <button
               onClick={() => handleNavClick('contact')}
-              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#0A756A] to-[#14B8A6] text-white text-xs font-semibold"
+              className="w-full btn-primary text-xs justify-center"
             >
               Contact Us
             </button>

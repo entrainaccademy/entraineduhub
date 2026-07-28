@@ -13,40 +13,38 @@ export const Footer = ({ activeView, setActiveView }) => {
   };
 
   return (
-    <footer className="bg-[#050816] text-[#94A3B8] border-t border-white/10 pt-16 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#0A0A0B] text-[#CBD5E1] border-t border-white/10 pt-16 pb-10">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-white/5">
           
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#0A756A] to-[#14B8A6] p-[1px]">
-                <div className="w-full h-full bg-[#050816] rounded-[11px] flex items-center justify-center">
-                  <Layers className="w-3.5 h-3.5 text-[#14B8A6]" />
-                </div>
+              <div className="w-8 h-8 rounded-lg bg-[#0A756A] flex items-center justify-center text-white">
+                <Layers className="w-4 h-4" />
               </div>
-              <span className="font-extrabold text-sm tracking-wider text-white">ENTRAIN EDUHUB</span>
+              <span className="font-bold text-sm tracking-tight text-[#F8FAFC]">ENTRAIN EDUHUB</span>
             </div>
-            <p className="text-xs text-[#94A3B8] leading-relaxed">
+            <p className="text-sm text-[#94A3B8] leading-relaxed">
               {COMPANY_INFO.tagline}
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Our Ventures</h4>
-            <ul className="space-y-2 text-xs">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Our Ventures</h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <button onClick={() => handleNav('academy')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('academy')} className="hover:text-[#14B8A6] transition-colors">
                   Entrain Academy (Culinary)
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('lab')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('lab')} className="hover:text-[#14B8A6] transition-colors">
                   Entrain Lab (Digital Marketing)
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('growth-lab')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('growth-lab')} className="hover:text-[#14B8A6] transition-colors">
                   Entrain Growth Lab (Organic Agency)
                 </button>
               </li>
@@ -54,19 +52,19 @@ export const Footer = ({ activeView, setActiveView }) => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Navigation</h4>
-            <ul className="space-y-2 text-xs">
-              <li><button onClick={() => handleNav('home')} className="hover:text-white transition-colors">Home</button></li>
-              <li><button onClick={() => handleNav('about')} className="hover:text-white transition-colors">About Us & Story</button></li>
-              <li><button onClick={() => handleNav('contact')} className="hover:text-white transition-colors">Contact Us</button></li>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Navigation</h4>
+            <ul className="space-y-2 text-sm">
+              <li><button onClick={() => handleNav('home')} className="hover:text-[#14B8A6] transition-colors">Home</button></li>
+              <li><button onClick={() => handleNav('about')} className="hover:text-[#14B8A6] transition-colors">About Us & Story</button></li>
+              <li><button onClick={() => handleNav('contact')} className="hover:text-[#14B8A6] transition-colors">Contact Us</button></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Direct Inquiries</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Direct Inquiries</h4>
             <button
               onClick={() => handleNav('contact')}
-              className="w-full py-2 px-3 rounded-xl bg-[#111827] border border-white/10 text-white text-xs font-semibold hover:bg-white/5 transition-all text-center"
+              className="w-full btn-secondary text-xs"
             >
               Contact Entrain EduHub
             </button>
@@ -82,7 +80,7 @@ export const Footer = ({ activeView, setActiveView }) => {
 
           <button
             onClick={scrollToTop}
-            className="p-1.5 rounded-lg bg-[#111827] border border-white/5 hover:text-white text-xs flex items-center gap-1"
+            className="p-1.5 rounded-lg bg-[#171A1D] border border-white/5 hover:text-[#F8FAFC] text-xs flex items-center gap-1"
           >
             <ArrowUp className="w-3.5 h-3.5" />
             <span>Top</span>
