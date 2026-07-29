@@ -1,9 +1,89 @@
 import React from 'react';
 import { MonitorPlay, CheckCircle2, UserCheck, Clock, Award, DollarSign, ArrowRight, HelpCircle, Users, BarChart2, BookOpen } from 'lucide-react';
-import { COMPANIES } from '../data/companyData.js';
+
+const LAB = {
+  id: "lab",
+  name: "Entrain Lab",
+  badge: "Digital Marketing Academy",
+  tagline: "Practical, Agency-Style Digital Marketing Training in Kerala",
+  overview: "Entrain Lab is a digital marketing academy in Kerala offering practical, agency-style training for aspiring digital marketers. Students work on real client briefs with mentor guidance to build industry-ready skills.",
+  targetAudience: [
+    "Students",
+    "Graduates",
+    "Working professionals",
+    "Career changers",
+    "Freelancers"
+  ],
+  whyChoose: [
+    { title: "Practical Agency-Style Learning", desc: "Work on live-style briefs rather than passive lectures." },
+    { title: "Mentor-Led Training", desc: "Direct feedback from experienced agency marketers." },
+    { title: "Real Projects", desc: "Build an impressive portfolio with verified project work." },
+    { title: "Student Success Stories", desc: "Track record of graduates landing roles across agencies." },
+    { title: "Industry-Focused Curriculum", desc: "Updated continuously with modern ad platforms and search algorithms." }
+  ],
+  courses: [
+    {
+      name: "Performance Marketing",
+      duration: "🔲 [Course Duration]",
+      format: "🔲 [Online / Offline]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Paid advertising, campaign structure, ROAS optimization across Meta & Google Ads."
+    },
+    {
+      name: "Web Development",
+      duration: "🔲 [Course Duration]",
+      format: "🔲 [Online / Offline]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Building responsive, modern, high-converting websites and landing portals."
+    },
+    {
+      name: "Search Engine Optimization (SEO)",
+      duration: "🔲 [Course Duration]",
+      format: "🔲 [Online / Offline]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Technical SEO audits, keyword strategy, and organic rank acceleration."
+    },
+    {
+      name: "Content Creation",
+      duration: "🔲 [Course Duration]",
+      format: "🔲 [Online / Offline]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Copywriting, graphic storytelling, short-form video scripting, and brand narrative."
+    },
+    {
+      name: "Social Media Marketing",
+      duration: "🔲 [Course Duration]",
+      format: "🔲 [Online / Offline]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Community engagement, channel strategy, analytics, and viral growth techniques."
+    }
+  ],
+  mentorsPlaceholder: "🔲 [Mentor Profiles]",
+  testimonialsPlaceholder: "🔲 [Student Testimonials]",
+  statisticsPlaceholder: "🔲 [Statistics]",
+  faqList: [
+    {
+      q: "What makes Entrain Lab different from other institutes?",
+      a: "We focus exclusively on agency-style practical learning where students work on real-world scenarios rather than memorizing textbooks."
+    },
+    {
+      q: "Are the courses available both online and offline in Kerala?",
+      a: "🔲 [Online / Offline details will be updated]."
+    },
+    {
+      q: "Do I get placement assistance upon course completion?",
+      a: "Yes, we provide resume building, portfolio preparation, and placement referral support for our graduates."
+    }
+  ]
+};
 
 export const LabView = ({ onNavigate }) => {
-  const lab = COMPANIES.find(c => c.id === 'lab');
+  const lab = LAB;
 
   return (
     <div className="pt-32 pb-20 space-y-20">

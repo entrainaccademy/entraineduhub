@@ -1,9 +1,82 @@
 import React from 'react';
 import { UtensilsCrossed, CheckCircle2, UserCheck, Clock, Award, DollarSign, ArrowRight } from 'lucide-react';
-import { COMPANIES, OUR_STORY_TIMELINE } from '../data/companyData.js';
+
+const ACADEMY = {
+  id: "academy",
+  name: "Entrain Academy",
+  badge: "Commercial Culinary Academy",
+  tagline: "Learn from real experience. Gain practical skills. Make confident career and business decisions.",
+  overview: "Entrain Academy is a commercial culinary training academy under Entrain EduHub, offering practical, industry-focused culinary education for aspiring chefs, food entrepreneurs, business owners, and hospitality professionals. Students receive hands-on training using modern equipment, industry-standard techniques, experienced mentors, and placement support.",
+  targetAudience: [
+    "Aspiring chefs",
+    "Culinary professionals",
+    "Food entrepreneurs",
+    "Hospitality professionals",
+    "Individuals seeking careers abroad"
+  ],
+  whyChoose: [
+    { title: "Real Industry Experience", desc: "Curriculum built from real-world food business operations." },
+    { title: "Practical Learning", desc: "Hands-on practice in professional kitchen environments." },
+    { title: "Modern Equipment", desc: "Train with commercial-grade culinary infrastructure." },
+    { title: "Experienced Mentors", desc: "Direct guidance from seasoned chefs and business owners." },
+    { title: "Placement Support", desc: "Career acceleration and domestic & international placement assistance." },
+    { title: "Business-Focused Training", desc: "Learn food costing, recipe standardization, and bakery management." }
+  ],
+  courses: [
+    {
+      title: "Commercial Culinary & Bakery Arts",
+      duration: "🔲 [Duration]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Hands-on professional culinary and baking techniques for commercial kitchens."
+    },
+    {
+      title: "Food Business Entrepreneurship",
+      duration: "🔲 [Duration]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Comprehensive training on kitchen operations, food safety, inventory, and business launch."
+    },
+    {
+      title: "Hospitality & International Culinary Career Program",
+      duration: "🔲 [Duration]",
+      fees: "🔲 [Fees]",
+      certification: "🔲 [Certification]",
+      description: "Specialized training tailored for global culinary placements and career mobility."
+    }
+  ]
+};
+
+const OUR_STORY_TIMELINE = [
+  {
+    year: "2014",
+    title: "Leaving Degree Studies",
+    description: "The founder left degree studies to support the family bakery business."
+  },
+  {
+    year: "Years of Experience",
+    title: "Hands-on Mastery",
+    description: "Immersive learning in food production, bakery operations, customer service, and business management."
+  },
+  {
+    year: "Overcoming Challenges",
+    title: "Resilience Through Adversity",
+    description: "Navigating major disruptions including floods, COVID-19, and financial difficulties that led to the bakery closing."
+  },
+  {
+    year: "A New Beginning",
+    title: "Building Entrain EduHub",
+    description: "Turning hard-earned lessons into the foundation of Entrain Academy, later expanding into digital marketing education and organic growth services."
+  },
+  {
+    year: "Today",
+    title: "Empowering Next-Gen Leaders",
+    description: "Students learn practical culinary skills, business knowledge, and digital strategies to build successful careers and enterprises."
+  }
+];
 
 export const AcademyView = ({ onNavigate }) => {
-  const academy = COMPANIES.find(c => c.id === 'academy');
+  const academy = ACADEMY;
 
   return (
     <div className="pt-32 pb-20 space-y-20">
