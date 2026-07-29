@@ -1,218 +1,267 @@
-import React from 'react';
-import { UtensilsCrossed, CheckCircle2, UserCheck, Clock, Award, DollarSign, ArrowRight } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  ArrowRight,
+  Award,
+  BriefcaseBusiness,
+  ChefHat,
+  Check,
+  Globe2,
+  Languages,
+  Sparkles,
+  UtensilsCrossed,
+} from 'lucide-react';
 
-const ACADEMY = {
-  id: "academy",
-  name: "Entrain Academy",
-  badge: "Commercial Culinary Academy",
-  tagline: "Learn from real experience. Gain practical skills. Make confident career and business decisions.",
-  overview: "Entrain Academy is a commercial culinary training academy under Entrain EduHub, offering practical, industry-focused culinary education for aspiring chefs, food entrepreneurs, business owners, and hospitality professionals. Students receive hands-on training using modern equipment, industry-standard techniques, experienced mentors, and placement support.",
-  targetAudience: [
-    "Aspiring chefs",
-    "Culinary professionals",
-    "Food entrepreneurs",
-    "Hospitality professionals",
-    "Individuals seeking careers abroad"
-  ],
-  whyChoose: [
-    { title: "Real Industry Experience", desc: "Curriculum built from real-world food business operations." },
-    { title: "Practical Learning", desc: "Hands-on practice in professional kitchen environments." },
-    { title: "Modern Equipment", desc: "Train with commercial-grade culinary infrastructure." },
-    { title: "Experienced Mentors", desc: "Direct guidance from seasoned chefs and business owners." },
-    { title: "Placement Support", desc: "Career acceleration and domestic & international placement assistance." },
-    { title: "Business-Focused Training", desc: "Learn food costing, recipe standardization, and bakery management." }
-  ],
-  courses: [
-    {
-      title: "Commercial Culinary & Bakery Arts",
-      duration: "🔲 [Duration]",
-      fees: "🔲 [Fees]",
-      certification: "🔲 [Certification]",
-      description: "Hands-on professional culinary and baking techniques for commercial kitchens."
-    },
-    {
-      title: "Food Business Entrepreneurship",
-      duration: "🔲 [Duration]",
-      fees: "🔲 [Fees]",
-      certification: "🔲 [Certification]",
-      description: "Comprehensive training on kitchen operations, food safety, inventory, and business launch."
-    },
-    {
-      title: "Hospitality & International Culinary Career Program",
-      duration: "🔲 [Duration]",
-      fees: "🔲 [Fees]",
-      certification: "🔲 [Certification]",
-      description: "Specialized training tailored for global culinary placements and career mobility."
-    }
-  ]
-};
-
-const OUR_STORY_TIMELINE = [
+const offers = [
   {
-    year: "2014",
-    title: "Leaving Degree Studies",
-    description: "The founder left degree studies to support the family bakery business."
+    icon: UtensilsCrossed,
+    number: '01',
+    title: 'Practical Culinary Training',
+    text: 'Hands-on training in commercial cooking, bakery, fast food, shawarma and focused workshops.',
   },
   {
-    year: "Years of Experience",
-    title: "Hands-on Mastery",
-    description: "Immersive learning in food production, bakery operations, customer service, and business management."
+    icon: BriefcaseBusiness,
+    number: '02',
+    title: 'Food Business Skills',
+    text: 'Learn production, equipment, consistency and the decisions behind running a stronger food business.',
   },
   {
-    year: "Overcoming Challenges",
-    title: "Resilience Through Adversity",
-    description: "Navigating major disruptions including floods, COVID-19, and financial difficulties that led to the bakery closing."
+    icon: Award,
+    number: '03',
+    title: 'Career-Focused Support',
+    text: 'Certificates, career guidance and practical preparation for culinary and hospitality opportunities.',
   },
-  {
-    year: "A New Beginning",
-    title: "Building Entrain EduHub",
-    description: "Turning hard-earned lessons into the foundation of Entrain Academy, later expanding into digital marketing education and organic growth services."
-  },
-  {
-    year: "Today",
-    title: "Empowering Next-Gen Leaders",
-    description: "Students learn practical culinary skills, business knowledge, and digital strategies to build successful careers and enterprises."
-  }
 ];
 
+const reasons = [
+  'Training from experienced chefs',
+  'Commercial kitchen methods',
+  'Learn by preparing food yourself',
+  'Malayalam, English and Hindi',
+  'Programs for careers and businesses',
+  'Selected accommodation support',
+];
+
+const Reveal = ({ children, className = '', delay = 0 }) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y: 34, filter: 'blur(8px)' }}
+    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    viewport={{ once: true, margin: '-70px' }}
+    transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+  >
+    {children}
+  </motion.div>
+);
+
 export const AcademyView = ({ onNavigate }) => {
-  const academy = ACADEMY;
+  const imageStageRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: imageStageRef,
+    offset: ['start end', 'end start'],
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 0.25, 0.72], [0.72, 0.86, 1]);
+  const imageRadius = useTransform(scrollYProgress, [0.1, 0.65], [40, 0]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [90, -40]);
+  const overlayOpacity = useTransform(scrollYProgress, [0.35, 0.64], [0, 1]);
+
+  const contact = () => {
+    onNavigate('contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <div className="pt-32 pb-20 space-y-20">
-      
-      {/* Header */}
-      <section className="bg-[#0A0A0B] text-center max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171A1D] border border-white/10 text-xs font-medium text-[#14B8A6] mb-4">
-          <UtensilsCrossed className="w-3.5 h-3.5" />
-          <span>{academy.badge}</span>
+    <div className="academy-dark-page">
+      {/* Brief description */}
+      <section className="academy-dark-hero">
+        <div className="academy-dark-glow" />
+        <div className="academy-dark-shell academy-dark-hero-center">
+          <motion.img
+            className="academy-dark-logo"
+            src="/images/academy-logo-trimmed.png"
+            alt="Entrain Academy"
+            initial={{ opacity: 0, y: -18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          />
+          <div className="academy-dark-copy">
+            <motion.div
+              className="academy-dark-eyebrow"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <ChefHat size={15} />
+              Entrain Culinary Academy · Manjeri
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Learn beyond<br />
+              <span>the recipe.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.18 }}
+            >
+              Practical culinary education for aspiring chefs, hospitality
+              professionals and food-business owners.
+            </motion.p>
+
+            <motion.div
+              className="academy-dark-scroll-hint"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.35 }}
+            >
+              <span><i /></span>
+              Scroll to enter the kitchen
+            </motion.div>
+          </div>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight leading-tight">
-          {academy.name}
-        </h1>
-        <p className="mt-3 text-base font-semibold text-[#14B8A6] max-w-2xl mx-auto">
-          "{academy.tagline}"
-        </p>
-        <p className="mt-4 text-base text-[#CBD5E1] leading-relaxed max-w-2xl mx-auto">
-          {academy.overview}
-        </p>
       </section>
 
-      {/* The Story Behind Entrain Academy Timeline */}
-      <section className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-semibold text-[#F8FAFC] tracking-tight">
-            The Story Behind Entrain Academy
-          </h2>
-          <p className="mt-2 text-base text-[#CBD5E1]">
-            Born from real-world bakery experience, overcoming trials, and building genuine expertise.
-          </p>
+      <section className="academy-image-stage" ref={imageStageRef}>
+        <div className="academy-image-sticky">
+          <motion.div
+            className="academy-image-reveal"
+            style={{ scale: imageScale, borderRadius: imageRadius, y: imageY }}
+          >
+            <img
+              src="/images/cullinaryimg2.jpg"
+              alt="Chefs working in a professional commercial kitchen"
+            />
+            <div className="academy-image-shade" />
+            <motion.div className="academy-image-copy" style={{ opacity: overlayOpacity }}>
+              <span>Inside the kitchen</span>
+              <h2>Real practice.<br />Real pressure.<br />Real progress.</h2>
+              <p>Learn by preparing food yourself with professional methods and experienced guidance.</p>
+            </motion.div>
+            <div className="academy-image-index">01 — Manjeri</div>
+          </motion.div>
         </div>
+      </section>
 
-        <div className="relative border-l border-white/10 ml-4 sm:ml-28 space-y-8 pl-6 sm:pl-8 max-w-4xl mx-auto">
-          {OUR_STORY_TIMELINE.map((item, idx) => (
-            <div key={idx} className="relative group">
-              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#0A0A0B] border-2 border-[#14B8A6]" />
-              <div className="sm:absolute sm:-left-32 sm:top-1.5 text-xs font-bold text-[#14B8A6] uppercase tracking-wider mb-1 sm:mb-0">
-                {item.year}
-              </div>
-              <div className="card-flat p-6">
-                <h3 className="text-[22px] font-bold text-[#F8FAFC] mb-1">{item.title}</h3>
-                <p className="text-base text-[#CBD5E1] leading-relaxed">{item.description}</p>
-              </div>
+      {/* What we offer */}
+      <section className="academy-dark-section">
+        <div className="academy-dark-shell">
+          <Reveal className="academy-dark-heading">
+            <div>
+              <span>What we offer</span>
+              <h2>Training built around<br />real outcomes.</h2>
             </div>
-          ))}
-        </div>
-      </section>
+          </Reveal>
 
-      {/* Who It's For */}
-      <section className="py-16 bg-[#111315] border-y border-white/5">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-3xl font-semibold text-[#F8FAFC] tracking-tight">
-              Who It's For
-            </h2>
-            <p className="mt-2 text-base text-[#CBD5E1]">Designed specifically for targeted culinary & hospitality career tracks</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {academy.targetAudience.map((audience, idx) => (
-              <div key={idx} className="card-flat p-5 flex items-center gap-3">
-                <UserCheck className="w-5 h-5 text-[#14B8A6] shrink-0" />
-                <span className="text-base font-medium text-[#F8FAFC]">{audience}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Courses */}
-      <section className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl font-semibold text-[#F8FAFC] tracking-tight">
-            Culinary Courses & Programs
-          </h2>
-          <p className="mt-2 text-base text-[#CBD5E1]">Hands-on commercial culinary, bakery, and entrepreneurship tracks</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {academy.courses.map((course, idx) => (
-            <div key={idx} className="card-flat p-6 flex flex-col justify-between space-y-4">
-              <div>
-                <h3 className="text-[22px] font-bold text-[#F8FAFC] mb-2">{course.title}</h3>
-                <p className="text-base text-[#CBD5E1] leading-relaxed mb-4">{course.description}</p>
-                
-                <div className="space-y-2 border-t border-white/5 pt-4 text-sm font-mono text-[#14B8A6]">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-[#CBD5E1]"><Clock className="w-4 h-4 text-[#14B8A6]" /> Duration:</span>
-                    <span>{course.duration}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-[#CBD5E1]"><DollarSign className="w-4 h-4 text-[#14B8A6]" /> Fees:</span>
-                    <span>{course.fees}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-[#CBD5E1]"><Award className="w-4 h-4 text-[#14B8A6]" /> Certification:</span>
-                    <span>{course.certification}</span>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                onClick={() => onNavigate('contact')}
-                className="w-full btn-primary text-xs flex items-center justify-center gap-1.5"
+          <div className="academy-dark-offer-grid">
+            {offers.map((offer, index) => (
+              <motion.article
+                key={offer.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -9, scale: 1.015, borderColor: 'rgba(240, 202, 121, .55)' }}
               >
-                <span>Inquire For Admission</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why Choose Entrain Academy */}
-      <section className="py-16 bg-[#111315] border-y border-white/5">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-semibold text-[#F8FAFC] tracking-tight">
-              Why Choose Entrain Academy
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {academy.whyChoose.map((point, idx) => (
-              <div key={idx} className="card-flat p-6 space-y-2">
-                <div className="flex items-center gap-2 text-lg font-semibold text-[#F8FAFC]">
-                  <CheckCircle2 className="w-5 h-5 text-[#14B8A6]" />
-                  <span>{point.title}</span>
+                <div className="academy-dark-offer-top">
+                  <motion.span whileHover={{ rotate: -8, scale: 1.12 }}>
+                    <offer.icon size={21} />
+                  </motion.span>
+                  <small>{offer.number}</small>
                 </div>
-                <p className="text-base text-[#CBD5E1] leading-relaxed pl-7">{point.desc}</p>
-              </div>
+                <motion.h3
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: .16 + index * .1 }}
+                >
+                  {offer.title}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: .24 + index * .1 }}
+                >
+                  {offer.text}
+                </motion.p>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Why choose us */}
+      <section className="academy-dark-why">
+        <div className="academy-dark-shell academy-dark-why-grid">
+          <Reveal className="academy-dark-why-copy">
+            <span className="academy-dark-label">Why choose us</span>
+            <h2>Real experience.<br />Practical confidence.</h2>
+            <p>
+              You learn more than recipes. Our chefs help you understand how a
+              professional kitchen produces food consistently and makes better
+              day-to-day decisions.
+            </p>
+            <div className="academy-dark-language">
+              <Languages size={19} />
+              <span>Multilingual teaching</span>
+              <small>Malayalam · English · Hindi</small>
+            </div>
+          </Reveal>
+
+          <div className="academy-dark-reasons">
+            {reasons.map((reason, index) => (
+              <motion.div
+                key={reason}
+                initial={{ opacity: 0, x: 22 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
+                whileHover={{ x: 7, backgroundColor: 'rgba(255,255,255,.025)' }}
+              >
+                <span><Check size={15} /></span>
+                <p>{reason}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Get in touch */}
+      <section className="academy-dark-contact">
+        <div className="academy-dark-shell">
+          <motion.div
+            className="academy-dark-contact-card"
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-90px' }}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              className="academy-contact-orb"
+              animate={{ x: [0, 38, 0], y: [0, -22, 0], scale: [1, 1.16, 1] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <div className="academy-dark-contact-icon"><Globe2 size={27} /></div>
+            <div>
+              <span>Get in touch</span>
+              <h2>Ready to start your<br />culinary journey?</h2>
+              <p>Tell us what you want to learn. Our team will help you choose the right program.</p>
+            </div>
+            <motion.button
+              onClick={contact}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Contact the academy <ArrowRight size={18} />
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
