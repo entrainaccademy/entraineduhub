@@ -1,6 +1,17 @@
 import React from 'react';
 import { ArrowRight, UtensilsCrossed, MonitorPlay, TrendingUp, Sparkles, Building2, MapPin, Calendar, Compass, ShieldCheck } from 'lucide-react';
-import { COMPANY_INFO, MISSION } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  tagline: "Real Experience. Real Skills. Real Growth.",
+  overview: "Entrain EduHub is the foundation of ventures that bridge real-world experience with practical education, helping individuals and businesses learn, grow, and succeed..",
+  details: "From culinary training to digital marketing education to organic growth strategy, Entrain EduHub equips learners and businesses with practical, industry-ready skills.",
+  foundedYear: "🔲 [Year]",
+  location: "🔲 [Location]",
+};
+
+const MISSION = {
+  statement: "To bridge the gap between real-world experience and formal education by building practical skills, confident entrepreneurs, and industry-ready professionals across food, digital marketing, and business growth.",
+};
 
 export const HomeView = ({ onNavigate }) => {
   return (
@@ -13,10 +24,10 @@ export const HomeView = ({ onNavigate }) => {
             
             {/* Headline & Subheadline */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171A1D] border border-white/10 text-xs font-medium text-[#14B8A6]">
+              {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171A1D] border border-white/10 text-xs font-medium text-[#14B8A6]">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Entrain EduHub Parent Entity</span>
-              </div>
+              </div> */}
 
               <h1 className="text-4xl sm:text-5xl lg:text-[60px] font-bold text-[#F8FAFC] tracking-tight leading-[1.15]">
                 Real Experience.{' '}

@@ -1,6 +1,43 @@
 import React from 'react';
 import { Building2, Compass, ShieldCheck, ArrowRight } from 'lucide-react';
-import { MISSION, OUR_STORY_TIMELINE, COMPANY_INFO } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  overview: "Entrain EduHub is the foundation of ventures that bridge real-world experience with practical education, helping individuals and businesses learn, grow, and succeed..",
+  foundedYear: "🔲 [Year]",
+  location: "🔲 [Location]",
+};
+
+const MISSION = {
+  statement: "To bridge the gap between real-world experience and formal education by building practical skills, confident entrepreneurs, and industry-ready professionals across food, digital marketing, and business growth.",
+};
+
+const OUR_STORY_TIMELINE = [
+  {
+    year: "2014",
+    title: "Leaving Degree Studies",
+    description: "The founder left degree studies to support the family bakery business."
+  },
+  {
+    year: "Years of Experience",
+    title: "Hands-on Mastery",
+    description: "Immersive learning in food production, bakery operations, customer service, and business management."
+  },
+  {
+    year: "Overcoming Challenges",
+    title: "Resilience Through Adversity",
+    description: "Navigating major disruptions including floods, COVID-19, and financial difficulties that led to the bakery closing."
+  },
+  {
+    year: "A New Beginning",
+    title: "Building Entrain EduHub",
+    description: "Turning hard-earned lessons into the foundation of Entrain Academy, later expanding into digital marketing education and organic growth services."
+  },
+  {
+    year: "Today",
+    title: "Empowering Next-Gen Leaders",
+    description: "Students learn practical culinary skills, business knowledge, and digital strategies to build successful careers and enterprises."
+  }
+];
 
 export const AboutView = ({ onNavigate }) => {
   return (

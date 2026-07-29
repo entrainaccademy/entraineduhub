@@ -1,6 +1,36 @@
 import React from 'react';
-import { ENTERPRISE_STATS } from '../data/companyData.js';
 import { BarChart3 } from 'lucide-react';
+
+const ENTERPRISE_STATS = [
+  {
+    value: "3+",
+    numericValue: 3,
+    suffix: "+",
+    label: "Independent Companies",
+    subtext: "Unified under Entrain Edu Hub governance"
+  },
+  {
+    value: "100+",
+    numericValue: 100,
+    suffix: "+",
+    label: "Enterprise Projects",
+    subtext: "Delivered across software, AI, & branding"
+  },
+  {
+    value: "1000+",
+    numericValue: 1000,
+    suffix: "+",
+    label: "Students Trained",
+    subtext: "Graduating with real-world industry skills"
+  },
+  {
+    value: "50+",
+    numericValue: 50,
+    suffix: "+",
+    label: "Global Clients",
+    subtext: "Trusting our growth and technology labs"
+  }
+];
 
 export const StatsSection = () => {
   return (

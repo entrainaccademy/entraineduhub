@@ -1,6 +1,44 @@
 import React from 'react';
 import { Lightbulb, ShieldCheck, Users, Layers } from 'lucide-react';
-import { WHY_CHOOSE_US } from '../data/companyData.js';
+
+const WHY_CHOOSE_US = [
+  {
+    id: "innovation",
+    title: "Relentless Innovation",
+    description: "We pioneer modern software patterns, artificial intelligence integrations, and agile marketing methodologies that keep your organization ahead of market shifts.",
+    icon: "Lightbulb"
+  },
+  {
+    id: "quality",
+    title: "Enterprise Quality",
+    description: "From code architecture to design systems and educational curricula, every output undergoes rigorous quality assurance and peer review.",
+    icon: "ShieldCheck"
+  },
+  {
+    id: "experienced-team",
+    title: "Vetted Industry Experts",
+    description: "Our cross-functional teams consist of senior engineers, growth strategists, and veteran educators with proven track records in high-growth environments.",
+    icon: "Users"
+  },
+  {
+    id: "customer-focus",
+    title: "Client-Centric Alignment",
+    description: "We build long-term relationships centered around transparent metrics, dedicated project managers, and shared goals for sustainable expansion.",
+    icon: "HeartHandshake"
+  },
+  {
+    id: "scalable-solutions",
+    title: "Scalable Infrastructure",
+    description: "Our engineering and marketing models are architected from ground zero to scale seamlessly as your user base and business requirements expand.",
+    icon: "Layers"
+  },
+  {
+    id: "continuous-growth",
+    title: "Continuous Upskilling",
+    description: "By integrating our Academy directly with our Labs and Growth divisions, our team and clients remain continuously upskilled in cutting-edge tech.",
+    icon: "Zap"
+  }
+];
 
 export const WhyChooseUs = () => {
   const getIcon = (iconName) => {

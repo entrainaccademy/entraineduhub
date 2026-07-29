@@ -1,9 +1,20 @@
 import React from 'react';
 import { TrendingUp, Sparkles, Shield, ArrowRight } from 'lucide-react';
-import { COMPANIES } from '../data/companyData.js';
+
+const GROWTH_LAB = {
+  id: "growth-lab",
+  name: "Entrain Growth Lab",
+  badge: "Organic Growth Agency (Coming Soon)",
+  tagline: "Building Long-Term Visibility Through Sustainable Organic Strategies",
+  shortDescription: "A digital marketing agency focused purely on organic growth, helping businesses build sustainable reach without depending on paid advertising.",
+  overview: "Entrain Growth Lab is a digital marketing agency focused entirely on organic growth. Rather than relying heavily on paid advertising, the company helps businesses build long-term visibility through sustainable organic strategies.",
+  statusBadge: "Coming Soon",
+  servicesPlaceholder: "🔲 [Services]",
+  targetAudiencePlaceholder: "🔲 [Target Audience]",
+};
 
 export const GrowthLabView = ({ onNavigate }) => {
-  const growth = COMPANIES.find(c => c.id === 'growth-lab');
+  const growth = GROWTH_LAB;
 
   return (
     <div className="pt-32 pb-20 space-y-16">

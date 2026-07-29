@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Sparkles, CheckCircle2, Share2 } from 'lucide-react';
-import { COMPANY_INFO } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  contactEmail: "🔲 [Email Address]",
+  contactPhone: "🔲 [Phone Number]",
+  address: "🔲 [Corporate Address]",
+  socials: {
+    linkedin: "🔲 [LinkedIn]",
+  },
+};
 
 export const ContactView = () => {
   const [submitted, setSubmitted] = useState(false);

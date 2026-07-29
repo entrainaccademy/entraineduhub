@@ -1,6 +1,26 @@
 import React from 'react';
 import { Eye, Target, CheckCircle2, Compass } from 'lucide-react';
-import { VISION_MISSION } from '../data/companyData.js';
+
+const VISION_MISSION = [
+  {
+    title: "Strategic Vision",
+    description: "To become the global benchmark enterprise holding entity that harmonizes technological innovation, market expansion, and practical talent development into a self-sustaining growth ecosystem.",
+    details: [
+      "Empowering enterprises through intelligent software and performance marketing.",
+      "Cultivating top-tier technology talent to bridge the global digital skills gap.",
+      "Building resilient SaaS platforms that solve real-world industry bottlenecks."
+    ]
+  },
+  {
+    title: "Corporate Mission",
+    description: "To deliver uncompromising value through three specialized operational verticals—Growth Labs, Labs, and Academy—driven by integrity, technological excellence, and client success.",
+    details: [
+      "Deliver measurable ROI for client brands via data-led marketing strategies.",
+      "Engineer secure, high-performance software systems with zero architectural compromise.",
+      "Provide accessible, high-impact education that transforms student career trajectories."
+    ]
+  }
+];
 
 export const VisionMission = () => {
   return (

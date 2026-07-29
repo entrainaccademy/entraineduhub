@@ -1,6 +1,57 @@
 import React from 'react';
 import { ArrowRight, TrendingUp, Code, GraduationCap, CheckCircle2, Sparkles } from 'lucide-react';
-import { SUBSIDIARIES } from '../data/companyData.js';
+
+const SUBSIDIARIES = [
+  {
+    id: "growth-labs",
+    name: "Entrain Growth Labs",
+    shortName: "Growth Labs",
+    tagline: "Full-Funnel Digital Marketing & Brand Acceleration",
+    categoryBadge: "Digital Growth & Media",
+    shortDescription: "Data-driven performance marketing, digital branding, SEO strategies, and web experiences that scale market reach and build enduring enterprise valuation.",
+    iconName: "TrendingUp",
+    services: [
+      { name: "Digital Marketing Agency" },
+      { name: "Brand Strategy & Identity" },
+      { name: "Performance Marketing" },
+      { name: "Enterprise Search Engine Optimization (SEO)" },
+      { name: "Social Media & Community Marketing" },
+      { name: "Web Development & Landing Pages" },
+    ],
+  },
+  {
+    id: "labs",
+    name: "Entrain Labs",
+    shortName: "Labs",
+    tagline: "Custom Software Engineering & Artificial Intelligence Solutions",
+    categoryBadge: "Software & AI Solutions",
+    shortDescription: "Architecting cloud-native SaaS products, custom software applications, AI models, and intuitive UI/UX systems designed for seamless operational scalability.",
+    iconName: "Code",
+    services: [
+      { name: "Custom Software Development" },
+      { name: "Artificial Intelligence & ML Solutions" },
+      { name: "SaaS Product Engineering" },
+      { name: "Web & Mobile Applications" },
+      { name: "Enterprise UI/UX Design" },
+    ],
+  },
+  {
+    id: "academy",
+    name: "Entrain Academy",
+    shortName: "Academy",
+    tagline: "Industry-Aligned Training, Software & AI Career Acceleration",
+    categoryBadge: "Education & Upskilling",
+    shortDescription: "Empowering students and working professionals with job-ready certifications in Full-Stack Development, Artificial Intelligence, and Performance Marketing.",
+    iconName: "GraduationCap",
+    services: [
+      { name: "Online & Offline Training Programs" },
+      { name: "Software Development Courses" },
+      { name: "AI & Machine Learning Training" },
+      { name: "Digital Marketing Masterclasses" },
+      { name: "Career Acceleration & Placement" },
+    ],
+  }
+];
 
 export const CompaniesSection = ({ onSelectBrand }) => {
   const getBrandIcon = (iconName) => {

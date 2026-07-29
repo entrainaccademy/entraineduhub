@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Sparkles, CheckCircle2 } from 'lucide-react';
-import { COMPANY_INFO, SUBSIDIARIES } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  contactEmail: "🔲 [Email Address]",
+  contactPhone: "🔲 [Phone Number]",
+  headquarters: "🔲 [Corporate Address]",
+};
+
+const SUBSIDIARIES = [
+  { id: "growth-labs", shortName: "Growth Labs" },
+  { id: "labs",        shortName: "Labs" },
+  { id: "academy",     shortName: "Academy" },
+];
 
 export const ContactCTA = ({ initialBrandId }) => {
   const [selectedBrand, setSelectedBrand] = useState(initialBrandId || 'parent');

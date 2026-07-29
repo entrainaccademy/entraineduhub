@@ -1,6 +1,9 @@
 import React from 'react';
 import { Layers, ArrowUp, ShieldCheck } from 'lucide-react';
-import { COMPANY_INFO } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  tagline: "Real Experience. Real Skills. Real Growth.",
+};
 
 export const Footer = ({ activeView, setActiveView }) => {
   const scrollToTop = () => {

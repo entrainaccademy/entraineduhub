@@ -1,6 +1,9 @@
 import React from 'react';
 import { Building2, Network, Cpu, Target } from 'lucide-react';
-import { COMPANY_INFO } from '../data/companyData.js';
+
+const COMPANY_INFO = {
+  overview: "Entrain EduHub is the foundation of ventures that bridge real-world experience with practical education, helping individuals and businesses learn, grow, and succeed..",
+};
 
 export const AboutSection = () => {
   const pillars = [
