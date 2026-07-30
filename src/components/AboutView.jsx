@@ -1,135 +1,151 @@
 import React from 'react';
-import { Building2, Compass, ShieldCheck, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const COMPANY_INFO = {
-  overview: "Entrain EduHub is the foundation of ventures that bridge real-world experience with practical education, helping individuals and businesses learn, grow, and succeed..",
-  foundedYear: "🔲 [Year]",
-  location: "🔲 [Location]",
-};
-
-const MISSION = {
-  statement: "To bridge the gap between real-world experience and formal education by building practical skills, confident entrepreneurs, and industry-ready professionals across food, digital marketing, and business growth.",
-};
-
-const OUR_STORY_TIMELINE = [
-  {
-    year: "2014",
-    title: "Leaving Degree Studies",
-    description: "The founder left degree studies to support the family bakery business."
-  },
-  {
-    year: "Years of Experience",
-    title: "Hands-on Mastery",
-    description: "Immersive learning in food production, bakery operations, customer service, and business management."
-  },
-  {
-    year: "Overcoming Challenges",
-    title: "Resilience Through Adversity",
-    description: "Navigating major disruptions including floods, COVID-19, and financial difficulties that led to the bakery closing."
-  },
-  {
-    year: "A New Beginning",
-    title: "Building Entrain EduHub",
-    description: "Turning hard-earned lessons into the foundation of Entrain Academy, later expanding into digital marketing education and organic growth services."
-  },
-  {
-    year: "Today",
-    title: "Empowering Next-Gen Leaders",
-    description: "Students learn practical culinary skills, business knowledge, and digital strategies to build successful careers and enterprises."
-  }
+const STORY = [
+  "Years spent running the family bakery brought firsthand lessons in food production, operations, and business — before floods, the pandemic, and financial strain closed its doors.",
+  "Those lessons became the foundation for Entrain Academy, Entrain Lab, and Entrain Growth Lab, bringing real-world experience into culinary education, digital marketing, and business growth.",
+  "Today, Entrain EduHub helps students build the skills and confidence to create careers of their own.",
 ];
 
-export const AboutView = ({ onNavigate }) => {
-  return (
-    <div className="pt-32 pb-20 space-y-20">
-      
-      {/* Header */}
-      <section className="bg-[#0A0A0B] text-center max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171A1D] border border-white/10 text-xs font-medium text-[#14B8A6] mb-4">
-          <Building2 className="w-3.5 h-3.5" />
-          <span>About Entrain EduHub</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight leading-tight max-w-3xl mx-auto">
-          Turning Real-World Experience Into Practical Growth
-        </h1>
-        <p className="mt-4 text-base text-[#CBD5E1] leading-relaxed max-w-2xl mx-auto">
-          {COMPANY_INFO.overview}
-        </p>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-16 bg-[#111315] border-y border-white/5">
-        <div className="max-w-[1280px] mx-auto px-4 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A756A]/20 text-[#14B8A6] border border-[#0A756A]/30 text-xs font-bold uppercase tracking-wider">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Our Mission</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[#F8FAFC] leading-relaxed max-w-3xl mx-auto">
-            "{MISSION.statement}"
-          </h2>
-        </div>
-      </section>
-
-      {/* Story Timeline Section */}
-      <section className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-[38px] font-semibold text-[#F8FAFC] tracking-tight">
-            Our Story
-          </h2>
-          <p className="mt-3 text-base text-[#CBD5E1] leading-relaxed">
-            Entrain EduHub began with a simple realization: real business lessons often come from real struggles—not textbooks.
-          </p>
-        </div>
-
-        {/* Timeline Component */}
-        <div className="relative border-l border-white/10 ml-4 sm:ml-32 space-y-10 pl-6 sm:pl-10 max-w-4xl mx-auto">
-          {OUR_STORY_TIMELINE.map((item, idx) => (
-            <div key={idx} className="relative group">
-              {/* Timeline Dot */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-[#0A0A0B] border-2 border-[#14B8A6]" />
-
-              {/* Year Label */}
-              <div className="sm:absolute sm:-left-36 sm:top-1.5 text-xs font-bold text-[#14B8A6] uppercase tracking-wider mb-1 sm:mb-0">
-                {item.year}
-              </div>
-
-              {/* Card */}
-              <div className="card-flat p-6">
-                <h3 className="text-[22px] font-bold text-[#F8FAFC] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-base text-[#CBD5E1] leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Placeholders Banner */}
-      <section className="max-w-[1280px] mx-auto px-4">
-        <div className="card-flat p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-[#14B8A6] shrink-0" />
-            <div className="text-sm text-[#CBD5E1]">
-              <span>Corporate Details: </span>
-              <strong className="text-[#F8FAFC]">Founding Year: {COMPANY_INFO.foundedYear}</strong>
-              <span className="mx-2">•</span>
-              <strong className="text-[#F8FAFC]">Location: {COMPANY_INFO.location}</strong>
-            </div>
-          </div>
-
-          <button
-            onClick={() => onNavigate('contact')}
-            className="btn-primary text-xs flex items-center gap-1.5"
-          >
-            <span>Partner With Us</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      </section>
-
-    </div>
-  );
+const draw = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: (delay) => ({
+    pathLength: 1,
+    opacity: 1,
+    transition: { pathLength: { delay, duration: 1.8, ease: [0.65, 0, 0.35, 1] }, opacity: { delay, duration: 0.2 } },
+  }),
 };
+
+const BuildingSketch = () => (
+  <motion.svg
+    className="about-building-sketch"
+    viewBox="0 0 1200 650"
+    fill="none"
+    initial="hidden"
+    animate="visible"
+    aria-hidden="true"
+  >
+    <motion.path custom={0.05} variants={draw} d="M82 553H1117" />
+    <motion.path custom={0.15} variants={draw} d="M163 553V258L309 137L455 258V553" />
+    <motion.path custom={0.28} variants={draw} d="M121 275L309 111L497 275" />
+    <motion.path custom={0.36} variants={draw} d="M455 302H956V553H455" />
+    <motion.path custom={0.45} variants={draw} d="M455 302L525 225H887L956 302" />
+    <motion.path custom={0.58} variants={draw} d="M256 553V371H362V553M277 371V333H341V371" />
+    <motion.path custom={0.7} variants={draw} d="M520 553V402H636V553M678 402H803V490H678V402ZM838 402H913V490H838V402Z" />
+    <motion.path custom={0.82} variants={draw} d="M498 344H920M520 344L498 382H920L898 344" />
+    <motion.path custom={0.94} variants={draw} d="M211 294H407M235 294L218 330H400L383 294" />
+    <motion.path custom={1.05} variants={draw} d="M108 553L78 590M1090 553L1122 590M53 590H1150" />
+    <motion.path custom={1.18} variants={draw} d="M994 553V366M978 366H1010M994 366C994 334 1034 322 1052 349C1069 326 1110 338 1110 371" />
+  </motion.svg>
+);
+
+const reveal = {
+  hidden: { opacity: 0, y: 38 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const storyReveal = {
+  hidden: (index) => ({
+    opacity: 0,
+    x: index % 2 === 0 ? -72 : 72,
+    filter: 'blur(6px)',
+  }),
+  visible: (index) => ({
+    opacity: 1,
+    x: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.85,
+      delay: index * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+export const AboutView = () => (
+  <div className="about-page about-sketch-page">
+    <section className="about-sketch-hero">
+      <div className="about-shell about-sketch-layout">
+        <div className="about-sketch-copy">
+          <h1>
+            <span>
+              <motion.i
+                initial={{ y: '110%' }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.35, duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Entrain EduHub wasn't built in a classroom.
+              </motion.i>
+            </span>
+            <span>
+              <motion.i
+                initial={{ y: '110%' }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.52, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                It grew from running a business, facing setbacks, and learning the hard way.
+              </motion.i>
+            </span>
+          </h1>
+        </div>
+
+        <div className="about-sketch-visual">
+          <div className="about-sketch-sun" />
+          <BuildingSketch />
+        </div>
+      </div>
+
+      <motion.div
+        className="about-sketch-scroll"
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ delay: 1.7, duration: 0.8, ease: 'easeOut' }}
+      />
+    </section>
+
+    <section className="about-story-section">
+      <div className="about-shell about-story-layout">
+        <motion.div
+          className="about-sketch-founder"
+          initial={{ opacity: 0, x: -70 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          aria-label="Founder image"
+        >
+          <div>
+            <img src="/images/mockimg.jpg" alt="Founder of Entrain EduHub" />
+          </div>
+          <motion.b
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+        </motion.div>
+
+        <div className="about-story-content">
+          <div className="about-story-heading">
+            <h2>Experience became the curriculum.</h2>
+          </div>
+
+          <div className="about-story-timeline">
+            {STORY.map((paragraph, index) => (
+              <motion.article
+                key={paragraph}
+                className={index === STORY.length - 1 ? 'about-story-conclusion' : ''}
+                custom={index}
+                variants={storyReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.35 }}
+              >
+                <p>{paragraph}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+);
