@@ -938,7 +938,7 @@
   .labs-hero h1 { font-size: 64px; }
   .labs-hero-brand-line { gap: 12px; margin-block: 8px 12px; }
   .labs-inline-logo { width: 145px; height: 50px; padding: 8px 13px; }
-  .labs-hero-actions { align-items: flex-start; flex-direction: column; }
+  .labs-hero-actions { align-items: center; flex-direction: column; }
   .labs-metrics { gap: 17px; }
   .labs-hero-visual { height: 430px; }
   .labs-dashboard { min-height: 520px; }
