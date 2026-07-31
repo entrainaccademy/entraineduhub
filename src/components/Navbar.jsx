@@ -2,22 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Layers, Menu, X, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 
 const COMPANIES_DROPDOWN = [
-  { id: 'academy',    label: 'Entrain Academy',    sub: 'Commercial Culinary Academy' },
-  { id: 'lab',        label: 'Entrain Lab',         sub: 'Digital Marketing Academy' },
-  { id: 'growth-lab', label: 'Entrain Growth Lab',  sub: 'Organic Growth Agency' },
+  { id: 'academy', label: 'Entrain Academy', sub: 'Commercial Culinary Academy' },
+  { id: 'lab', label: 'Entrain Lab', sub: 'Digital Marketing Academy' },
+  { id: 'growth-lab', label: 'Entrain Growth Lab', sub: 'Organic Growth Agency' },
 ];
 
 const FLAT_NAV = [
-  { id: 'home',    label: 'Home' },
-  { id: 'about',   label: 'About' },
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ];
 
 export const Navbar = ({ activeView, setActiveView }) => {
-  const [isScrolled,       setIsScrolled]       = useState(false);
-  const [mobileMenuOpen,   setMobileMenuOpen]   = useState(false);
-  const [dropdownOpen,     setDropdownOpen]     = useState(false);
-  const [mobileCompOpen,   setMobileCompOpen]   = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileCompOpen, setMobileCompOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   /* ── scroll listener ── */

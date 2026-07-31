@@ -34,7 +34,7 @@ export function App() {
     <div className="min-h-screen bg-[#0A0A0B] text-white selection:bg-[#0A756A]/30 selection:text-[#14B8A6] relative flex flex-col justify-between overflow-hidden">
       {/* Background Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none z-0" />
-      
+
       {/* Top Ambient Spotlight Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#0A756A]/10 rounded-full blur-[160px] pointer-events-none z-0" />
 
