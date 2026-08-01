@@ -11,13 +11,13 @@ const CorporateBuildingSketch = () => (
     aria-hidden="true"
     initial={{ opacity: 0, y: 120, scale: .72 }}
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ once: true, amount: .35 }}
+    viewport={{ once: true, amount: .15 }}
     transition={{ type: 'spring', stiffness: 95, damping: 13, mass: .9 }}
   >
-    <motion.path initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ delay: .12, duration: .72, ease: [0.22, 1, 0.36, 1] }} style={{ transformOrigin: 'center bottom' }} d="M71 452L98 191L322 126V452M322 452V69L470 35L558 83V452M558 452V190L706 166V452M470 35V419L558 452M98 191L322 213M71 452L322 452L470 419L558 452L706 452" />
-    <motion.path initial={{ opacity: 0, scale: .78 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: .42, duration: .62 }} style={{ transformOrigin: 'center bottom' }} d="M119 215L301 163V390L91 425M136 222L127 410M164 210L157 406M192 202L187 402M220 193L217 398M248 185L247 394M276 176L277 390M339 105L453 79V389L339 414V105ZM558 219L687 198V403L558 419V219Z" />
-    <motion.path initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: .66, duration: .58 }} d="M339 151L453 127M339 199L453 177M339 247L453 226M339 295L453 276M339 343L453 326M582 215V416M610 210V412M638 205V409M666 201V405M558 267L687 248M558 319L687 299M558 371L687 351M98 273L301 222M87 337L301 281" />
-    <motion.path initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .82, duration: .52 }} d="M523 452V392H649V452M510 392H668L687 410H528L510 392ZM48 452H722M82 452L55 495H713L690 452M343 414V452M425 395V428" />
+    <motion.path initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ delay: .12, duration: 1.05, ease: [0.22, 1, 0.36, 1] }} d="M71 452L98 191L322 126V452M322 452V69L470 35L558 83V452M558 452V190L706 166V452M470 35V419L558 452M98 191L322 213M71 452L322 452L470 419L558 452L706 452" />
+    <motion.path initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ delay: .3, duration: .95, ease: [0.22, 1, 0.36, 1] }} d="M119 215L301 163V390L91 425M136 222L127 410M164 210L157 406M192 202L187 402M220 193L217 398M248 185L247 394M276 176L277 390M339 105L453 79V389L339 414V105ZM558 219L687 198V403L558 419V219Z" />
+    <motion.path initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ delay: .48, duration: .9, ease: [0.22, 1, 0.36, 1] }} d="M339 151L453 127M339 199L453 177M339 247L453 226M339 295L453 276M339 343L453 326M582 215V416M610 210V412M638 205V409M666 201V405M558 267L687 248M558 319L687 299M558 371L687 351M98 273L301 222M87 337L301 281" />
+    <motion.path initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ delay: .64, duration: .78, ease: [0.22, 1, 0.36, 1] }} d="M523 452V392H649V452M510 392H668L687 410H528L510 392ZM48 452H722M82 452L55 495H713L690 452M343 414V452M425 395V428" />
     <motion.text x="396" y="102" textAnchor="middle" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .95, duration: .55 }}>ENTRAIN EDUHUB</motion.text>
     <motion.text className="home-building-legal" x="396" y="120" textAnchor="middle" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.05, duration: .45 }}>PRIVATE LIMITED</motion.text>
   </motion.svg>

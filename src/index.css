@@ -2508,6 +2508,9 @@
   .home-academy-emblem { padding: 30px; }
   .home-academy-about,.home-companies { padding: 85px 0; }
   .home-about-grid { gap: 48px; }
+  .home-about-sketch { min-height: 350px; justify-content: center; }
+  .home-about-sketch::before { width: min(88vw, 350px); height: min(88vw, 350px); }
+  .home-corporate-building { width: 100%; max-width: 390px; transform: none; }
   .home-company-grid article { min-height: 440px; padding: 25px; }
   .home-mission { width: min(100% - 30px, 1180px); margin: 50px auto; padding: 62px 22px 70px; border-radius: 24px; }
   .home-pixel-curtain { display: none; }
