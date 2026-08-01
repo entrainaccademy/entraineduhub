@@ -24,7 +24,7 @@ const CorporateBuildingSketch = () => (
 );
 
 const COMPANY_INFO = {
-  tagline: 'Real Experience. Real Skills. Real Growth.',
+  // tagline: 'Real Experience. Real Skills. Real Growth.',
   overview: 'Entrain EduHub is the foundation of ventures that bridge real-world experience with practical education, helping individuals and businesses learn, grow, and succeed..',
   details: 'From culinary training to digital marketing education to organic growth strategy, Entrain EduHub equips learners and businesses with practical, industry-ready skills.',
   foundedYear: '🔲 [Year]',
