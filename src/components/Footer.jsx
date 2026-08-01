@@ -1,95 +1,58 @@
 import React from 'react';
-import { Layers, ArrowUp, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUp, Facebook, Instagram, Mail, ShieldCheck } from 'lucide-react';
 
-const COMPANY_INFO = {
-  tagline: "Real Experience. Real Skills. Real Growth.",
-};
-
-export const Footer = ({ activeView, setActiveView }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+export const Footer = ({ setActiveView }) => {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const handleNav = (viewId) => {
+    if (viewId === 'contact') {
+      setActiveView('home');
+      window.setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 50);
+      return;
+    }
     setActiveView(viewId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-[#0A0A0B] text-[#CBD5E1] border-t border-white/10 pt-16 pb-10">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-white/5">
-          
-          <div className="space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#0A756A] flex items-center justify-center text-white">
-                <Layers className="w-4 h-4" />
-              </div>
-              <span className="font-bold text-sm tracking-tight text-[#F8FAFC]">ENTRAIN EDUHUB</span>
-            </div>
-            <p className="text-sm text-[#94A3B8] leading-relaxed">
-              {COMPANY_INFO.tagline}
-            </p>
-          </div>
+    <footer className="entrain-footer">
+      <div className="entrain-footer-wordmark" aria-hidden="true">
+        <motion.span
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: .25 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Entrain EduHub
+        </motion.span>
+      </div>
 
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Our Ventures</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <button onClick={() => handleNav('academy')} className="hover:text-[#14B8A6] transition-colors">
-                  Entrain Academy (Culinary)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('lab')} className="hover:text-[#14B8A6] transition-colors">
-                  Entrain Lab (Digital Marketing)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('growth-lab')} className="hover:text-[#14B8A6] transition-colors">
-                  Entrain Growth Lab (Organic Agency)
-                </button>
-              </li>
-            </ul>
-          </div>
+      <div className="entrain-footer-shell">
+        <nav className="entrain-footer-simple-links" aria-label="Footer navigation">
+          <button onClick={() => handleNav('home')}>Home</button>
+          <button onClick={() => handleNav('about')}>About Us</button>
+          <a href="https://www.entraincullinaryschool.com/">Entrain Academy</a>
+          <a href="https://www.theentrainlabs.com/">Entrain Lab</a>
+          <button onClick={() => handleNav('growth-lab')}>Entrain Growth Lab</button>
+          <button onClick={() => handleNav('contact')}>Contact Us</button>
+        </nav>
 
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Navigation</h4>
-            <ul className="space-y-2 text-sm">
-              <li><button onClick={() => handleNav('home')} className="hover:text-[#14B8A6] transition-colors">Home</button></li>
-              <li><button onClick={() => handleNav('about')} className="hover:text-[#14B8A6] transition-colors">About Us & Story</button></li>
-              <li><button onClick={() => handleNav('contact')} className="hover:text-[#14B8A6] transition-colors">Contact Us</button></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#F8FAFC] mb-3">Direct Inquiries</h4>
-            <button
-              onClick={() => handleNav('contact')}
-              className="w-full btn-secondary text-xs"
-            >
-              Contact Entrain EduHub
-            </button>
-          </div>
-
+        <div className="entrain-footer-socials" aria-label="Social links coming soon">
+          <button type="button" aria-label="Email link coming soon"><Mail size={17} /></button>
+          <button type="button" aria-label="Facebook link coming soon"><Facebook size={17} /></button>
+          <button type="button" aria-label="Instagram link coming soon"><Instagram size={17} /></button>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8]">
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#14B8A6]" />
+        <div className="entrain-footer-bottom">
+          <div>
+            <ShieldCheck size={15} />
             <span>© {new Date().getFullYear()} Entrain EduHub. All rights reserved.</span>
           </div>
-
-          <button
-            onClick={scrollToTop}
-            className="p-1.5 rounded-lg bg-[#171A1D] border border-white/5 hover:text-[#F8FAFC] text-xs flex items-center gap-1"
-          >
-            <ArrowUp className="w-3.5 h-3.5" />
-            <span>Top</span>
+          <button onClick={scrollToTop} className="entrain-footer-top">
+            <ArrowUp size={17} /> <span>Top</span>
           </button>
         </div>
-
       </div>
     </footer>
   );

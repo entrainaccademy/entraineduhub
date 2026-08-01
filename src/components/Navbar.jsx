@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Layers, Menu, X, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 
 const COMPANIES_DROPDOWN = [
-  { id: 'academy',    label: 'Entrain Academy',    sub: 'Commercial Culinary Academy' },
-  { id: 'lab',        label: 'Entrain Lab',         sub: 'Digital Marketing Academy' },
-  { id: 'growth-lab', label: 'Entrain Growth Lab',  sub: 'Organic Growth Agency' },
+  { id: 'academy', label: 'Entrain Academy', url: 'https://www.entraincullinaryschool.com/' },
+  { id: 'lab', label: 'Entrain Lab', url: 'https://www.theentrainlabs.com/' },
+  { id: 'growth-lab', label: 'Entrain Growth Lab' },
 ];
 
 const FLAT_NAV = [
@@ -39,11 +39,27 @@ export const Navbar = ({ activeView, setActiveView }) => {
   }, []);
 
   const handleNavClick = (viewId) => {
+    if (viewId === 'contact') {
+      setActiveView('home');
+      setMobileMenuOpen(false);
+      setDropdownOpen(false);
+      setMobileCompOpen(false);
+      window.setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 50);
+      return;
+    }
     setActiveView(viewId);
     setMobileMenuOpen(false);
     setDropdownOpen(false);
     setMobileCompOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleCompanyClick = (company) => {
+    if (company.url) {
+      window.location.href = company.url;
+      return;
+    }
+    handleNavClick(company.id);
   };
 
   const isCompanyActive = COMPANIES_DROPDOWN.some(c => c.id === activeView);
@@ -75,15 +91,15 @@ export const Navbar = ({ activeView, setActiveView }) => {
           top: isScrolled ? '10px' : '16px',
           left: '50%',
           transform: 'translateX(-50%)',
-          zIndex: 50,
+          zIndex: 1000,
           width: 'calc(100% - 32px)',
           maxWidth: '1100px',
           transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
           borderRadius: '9999px',
-          background: isScrolled ? 'rgba(10, 10, 14, 0.88)' : 'rgba(14, 14, 20, 0.68)',
+          background: isScrolled ? 'rgba(17, 29, 56, 0.94)' : 'rgba(17, 29, 56, 0.86)',
           backdropFilter: 'blur(22px)',
           WebkitBackdropFilter: 'blur(22px)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid rgba(196,147,62,0.24)',
           boxShadow: isScrolled
             ? '0 8px 40px rgba(0,0,0,0.60), 0 1px 0 rgba(255,255,255,0.06) inset'
             : '0 4px 24px rgba(0,0,0,0.40), 0 1px 0 rgba(255,255,255,0.05) inset',
@@ -97,15 +113,12 @@ export const Navbar = ({ activeView, setActiveView }) => {
             onClick={() => handleNavClick('home')}
             style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left', flexShrink: 0 }}
           >
-            <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'linear-gradient(135deg, #0A756A, #14B8A6)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: '0 2px 12px rgba(20,184,166,0.35)', flexShrink: 0 }}>
-              <Layers style={{ width: '16px', height: '16px' }} />
+            <div className="navbar-logo-mark" style={{ width: '38px', height: '46px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: '3px 5px', borderRadius: '12px', background: '#F1EDE4', boxShadow: '0 4px 14px rgba(0,0,0,.18)' }}>
+              <img className="navbar-logo-image" src="/images/entraineduhub-navbar.png" alt="Entrain EduHub" style={{ width: '25px', height: '40px', objectFit: 'contain' }} />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ fontWeight: 700, fontSize: '15px', letterSpacing: '-0.02em', color: '#F8FAFC' }}>ENTRAIN</span>
-                <span style={{ fontSize: '10px', fontWeight: 600, padding: '2px 6px', borderRadius: '4px', background: '#171A1D', color: '#14B8A6', border: '1px solid rgba(255,255,255,0.08)' }}>EDU HUB</span>
-              </div>
-              <span style={{ fontSize: '10px', color: '#94A3B8', fontWeight: 500 }}>Parent Company</span>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
+              <span style={{ fontWeight: 750, fontSize: '14px', letterSpacing: '-0.02em', color: '#F8FAFC' }}>ENTRAIN</span>
+              <span style={{ fontWeight: 700, fontSize: '11px', color: '#C4933E' }}>EDUHUB</span>
             </div>
           </button>
 
@@ -145,10 +158,10 @@ export const Navbar = ({ activeView, setActiveView }) => {
                     left: '50%',
                     transform: 'translateX(-50%)',
                     minWidth: '220px',
-                    background: 'rgba(10, 10, 18, 0.96)',
+                    background: 'rgba(17, 29, 56, 0.97)',
                     backdropFilter: 'blur(24px)',
                     WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255,255,255,0.10)',
+                    border: '1px solid rgba(196,147,62,0.22)',
                     borderRadius: '16px',
                     padding: '6px',
                     boxShadow: '0 12px 40px rgba(0,0,0,0.55)',
@@ -157,7 +170,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
                     {COMPANIES_DROPDOWN.map((c) => (
                       <button
                         key={c.id}
-                        onClick={() => handleNavClick(c.id)}
+                        onClick={() => handleCompanyClick(c)}
                         className="dropdown-item-btn"
                         style={{
                           width: '100%',
@@ -166,15 +179,12 @@ export const Navbar = ({ activeView, setActiveView }) => {
                           borderRadius: '10px',
                           border: 'none',
                           cursor: 'pointer',
-                          background: activeView === c.id ? 'rgba(20,184,166,0.12)' : 'transparent',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '1px',
+                          background: activeView === c.id ? 'rgba(196,147,62,0.14)' : 'transparent',
+                          display: 'block',
                           transition: 'background 0.18s ease',
                         }}
                       >
-                        <span style={{ fontSize: '13px', fontWeight: 600, color: activeView === c.id ? '#14B8A6' : '#F8FAFC' }}>{c.label}</span>
-                        <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 400 }}>{c.sub}</span>
+                        <span style={{ fontSize: '13px', fontWeight: 600, color: activeView === c.id ? '#C4933E' : '#F8FAFC' }}>{c.label}</span>
                       </button>
                     ))}
                   </div>
@@ -194,9 +204,9 @@ export const Navbar = ({ activeView, setActiveView }) => {
             <button
               onClick={() => handleNavClick('contact')}
               className="navbar-cta-btn"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 700, color: '#ffffff', background: 'linear-gradient(135deg, #0A756A, #14B8A6)', border: 'none', borderRadius: '9999px', padding: '9px 20px', cursor: 'pointer', letterSpacing: '-0.01em', boxShadow: '0 2px 16px rgba(20,184,166,0.35)', transition: 'all 0.22s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 24px rgba(20,184,166,0.55)'; e.currentTarget.style.transform = 'scale(1.04)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 2px 16px rgba(20,184,166,0.35)'; e.currentTarget.style.transform = 'scale(1)'; }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 700, color: '#111D38', background: 'linear-gradient(135deg, #A9742D, #C4933E)', border: 'none', borderRadius: '9999px', padding: '9px 20px', cursor: 'pointer', letterSpacing: '-0.01em', boxShadow: '0 2px 16px rgba(196,147,62,0.35)', transition: 'all 0.22s ease' }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 24px rgba(196,147,62,0.52)'; e.currentTarget.style.transform = 'scale(1.04)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 2px 16px rgba(196,147,62,0.35)'; e.currentTarget.style.transform = 'scale(1)'; }}
             >
               <span>Contact Us</span>
               <ArrowRight style={{ width: '14px', height: '14px' }} />
@@ -223,7 +233,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
       {mobileMenuOpen && (
         <div
           className="navbar-mobile-menu"
-          style={{ position: 'fixed', top: isScrolled ? '68px' : '78px', left: '50%', transform: 'translateX(-50%)', zIndex: 49, width: 'calc(100% - 32px)', maxWidth: '1100px', background: 'rgba(10, 10, 14, 0.96)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '12px', boxShadow: '0 8px 40px rgba(0,0,0,0.60)' }}
+          style={{ position: 'fixed', top: isScrolled ? '80px' : '94px', left: '50%', transform: 'translateX(-50%)', zIndex: 49, width: 'calc(100% - 32px)', maxWidth: '1100px', maxHeight: isScrolled ? 'calc(100dvh - 92px)' : 'calc(100dvh - 106px)', overflowY: 'auto', background: 'rgba(17, 29, 56, 0.97)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', border: '1px solid rgba(196,147,62,0.22)', borderRadius: '20px', padding: '12px', boxShadow: '0 12px 34px rgba(0,0,0,0.46)' }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
 
@@ -237,7 +247,7 @@ export const Navbar = ({ activeView, setActiveView }) => {
                 onMouseLeave={e => { if (activeView !== item.id) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#94A3B8'; } }}
               >
                 <span>{item.label}</span>
-                {activeView === item.id && <Sparkles style={{ width: '14px', height: '14px', color: '#14B8A6' }} />}
+                {activeView === item.id && <Sparkles style={{ width: '14px', height: '14px', color: '#C4933E' }} />}
               </button>
             ))}
 
@@ -256,11 +266,10 @@ export const Navbar = ({ activeView, setActiveView }) => {
                   {COMPANIES_DROPDOWN.map((c) => (
                     <button
                       key={c.id}
-                      onClick={() => handleNavClick(c.id)}
-                      style={{ width: '100%', textAlign: 'left', padding: '8px 12px', borderRadius: '10px', border: 'none', cursor: 'pointer', background: activeView === c.id ? 'rgba(20,184,166,0.12)' : 'transparent', display: 'flex', flexDirection: 'column', gap: '1px', transition: 'background 0.18s ease' }}
+                      onClick={() => handleCompanyClick(c)}
+                      style={{ width: '100%', textAlign: 'left', padding: '10px 12px', borderRadius: '10px', border: 'none', cursor: 'pointer', background: activeView === c.id ? 'rgba(196,147,62,0.14)' : 'transparent', display: 'block', transition: 'background 0.18s ease' }}
                     >
-                      <span style={{ fontSize: '13px', fontWeight: 600, color: activeView === c.id ? '#14B8A6' : '#F8FAFC' }}>{c.label}</span>
-                      <span style={{ fontSize: '11px', color: '#64748B' }}>{c.sub}</span>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: activeView === c.id ? '#C4933E' : '#F8FAFC' }}>{c.label}</span>
                     </button>
                   ))}
                 </div>
@@ -275,14 +284,14 @@ export const Navbar = ({ activeView, setActiveView }) => {
               onMouseLeave={e => { if (activeView !== 'contact') { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#94A3B8'; } }}
             >
               <span>Contact</span>
-              {activeView === 'contact' && <Sparkles style={{ width: '14px', height: '14px', color: '#14B8A6' }} />}
+              {activeView === 'contact' && <Sparkles style={{ width: '14px', height: '14px', color: '#C4933E' }} />}
             </button>
 
             {/* Contact CTA */}
             <div style={{ paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.07)', marginTop: '4px' }}>
               <button
                 onClick={() => handleNavClick('contact')}
-                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '13px', fontWeight: 700, color: '#ffffff', background: 'linear-gradient(135deg, #0A756A, #14B8A6)', border: 'none', borderRadius: '9999px', padding: '11px 20px', cursor: 'pointer', boxShadow: '0 2px 16px rgba(20,184,166,0.30)' }}
+                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '13px', fontWeight: 700, color: '#111D38', background: 'linear-gradient(135deg, #A9742D, #C4933E)', border: 'none', borderRadius: '9999px', padding: '11px 20px', cursor: 'pointer', boxShadow: '0 2px 16px rgba(196,147,62,0.30)' }}
               >
                 Contact Us
               </button>
@@ -299,6 +308,11 @@ export const Navbar = ({ activeView, setActiveView }) => {
           .navbar-desktop-cta    { display: flex !important; }
           .navbar-mobile-toggle  { display: none !important; }
           .navbar-mobile-menu    { display: none !important; }
+        }
+        @media (max-width: 1023px) {
+          .navbar-logo-mark { width: 34px !important; height: 42px !important; padding: 3px 5px !important; }
+          .navbar-logo-image { width: 22px !important; height: 36px !important; }
+          .navbar-mobile-menu { scrollbar-width: thin; scrollbar-color: rgba(196,147,62,.45) transparent; }
         }
         .nav-link-btn:hover {
           color: #F8FAFC !important;

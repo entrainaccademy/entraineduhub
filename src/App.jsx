@@ -5,7 +5,6 @@ import { AboutView } from './components/AboutView.jsx';
 import { AcademyView } from './components/AcademyView.jsx';
 import { LabView } from './components/LabView.jsx';
 import { GrowthLabView } from './components/GrowthLabView.jsx';
-import { ContactView } from './components/ContactView.jsx';
 import { Footer } from './components/Footer.jsx';
 
 export function App() {
@@ -23,8 +22,6 @@ export function App() {
         return <LabView onNavigate={setActiveView} />;
       case 'growth-lab':
         return <GrowthLabView onNavigate={setActiveView} />;
-      case 'contact':
-        return <ContactView />;
       default:
         return <HomeView onNavigate={setActiveView} />;
     }

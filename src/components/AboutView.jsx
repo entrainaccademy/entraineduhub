@@ -16,7 +16,7 @@ const draw = {
   }),
 };
 
-const BuildingSketch = () => (
+export const BuildingSketch = () => (
   <motion.svg
     className="about-building-sketch"
     viewBox="0 0 1200 650"
