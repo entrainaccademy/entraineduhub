@@ -1,10 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp, Facebook, Instagram, Mail, ShieldCheck } from 'lucide-react';
+import { Facebook, Instagram, Mail, ShieldCheck } from 'lucide-react';
 
 export const Footer = ({ setActiveView }) => {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
   const handleNav = (viewId) => {
     if (viewId === 'contact') {
       setActiveView('home');
@@ -49,9 +47,6 @@ export const Footer = ({ setActiveView }) => {
             <ShieldCheck size={15} />
             <span>© {new Date().getFullYear()} Entrain EduHub. All rights reserved.</span>
           </div>
-          <button onClick={scrollToTop} className="entrain-footer-top">
-            <ArrowUp size={17} /> <span>Top</span>
-          </button>
         </div>
       </div>
     </footer>
