@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { ContactView } from './ContactView.jsx';
 
 const CorporateBuildingSketch = () => (
@@ -38,27 +38,30 @@ const MISSION = {
 const companies = [
   {
     name: 'Entrain Academy',
-    category: 'Culinary Academy',
+    category: 'Culinary',
     description: 'A commercial culinary training academy offering hands-on courses for aspiring chefs, food entrepreneurs, and hospitality professionals in India and abroad.',
     logo: '/images/academy-logo-trimmed.png',
+    image: '/images/culinaryimg1.jpg',
     logoClass: 'home-company-logo academy',
     cta: 'Explore Entrain Academy',
     url: 'https://www.entraincullinaryschool.com/',
   },
   {
     name: 'Entrain Lab',
-    category: 'Digital Marketing Academy',
+    category: 'Education',
     description: 'A digital marketing academy in Kerala offering practical courses in Performance Marketing, Web Development, SEO, Content Creation, and Social Media Marketing.',
     logo: '/images/logolab-trimmed.png',
+    image: '/images/labs1.jpg',
     logoClass: 'home-company-logo lab',
     cta: 'Explore Entrain Lab',
     url: 'https://www.theentrainlabs.com/',
   },
   {
     name: 'Entrain Growth Lab',
-    category: 'Coming Soon',
+    category: 'Digital Marketing Agency',
     description: 'A digital marketing agency focused purely on organic growth, helping businesses build sustainable reach without depending on paid advertising.',
     logoClass: 'home-company-wordmark',
+    image: '/images/growth-lab-team.png',
     cta: 'Coming Soon / Learn More',
     view: 'growth-lab',
   },
@@ -89,11 +92,23 @@ const PixelBlock = ({ progress, index }) => {
 };
 
 export const HomeView = ({ onNavigate }) => {
+  const [[activeCompany, slideDirection], setActiveCompany] = useState([0, 1]);
   const aboutRef = useRef(null);
   const { scrollYProgress: aboutProgress } = useScroll({
     target: aboutRef,
     offset: ['start end', 'start 28%'],
   });
+
+  const showCompany = (nextIndex) => {
+    const wrappedIndex = (nextIndex + companies.length) % companies.length;
+    setActiveCompany([wrappedIndex, wrappedIndex > activeCompany ? 1 : -1]);
+  };
+
+  const stepCompany = (direction) => {
+    setActiveCompany([(activeCompany + direction + companies.length) % companies.length, direction]);
+  };
+
+  const company = companies[activeCompany];
 
   return (
   <div className="home-academy-page">
@@ -104,7 +119,7 @@ export const HomeView = ({ onNavigate }) => {
           <h1>Real Experience.<br /><span>Real Skills. Real Growth.</span></h1>
           <p>{COMPANY_INFO.tagline} {COMPANY_INFO.overview}</p>
           <div className="home-academy-actions">
-            <a href="#companies">Explore Our Companies <ArrowRight size={17} /></a>
+            <a href="#companies">Explore Our Sectors <ArrowRight size={17} /></a>
             <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Contact Us</button>
           </div>
         </motion.div>
@@ -131,38 +146,58 @@ export const HomeView = ({ onNavigate }) => {
     <section id="companies" className="home-companies">
       <div className="home-academy-shell">
         <Reveal className="home-companies-heading">
-          <h2>Our Operating Companies</h2>
-          <p>Each venture under Entrain EduHub serves a specialized focus across food arts, digital marketing, and organic business growth.</p>
+          <h2>Our Sectors</h2>
+          <p>Explore our specialized sectors across culinary arts, digital marketing education, and organic business growth.</p>
         </Reveal>
-        <div className="home-company-grid">
-          {companies.map((company, index) => (
-            <motion.article
-              key={company.name}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: .6, delay: index * .1 }}
-              whileHover={{ y: -9 }}
-            >
-              <div>
-                <div className="home-company-brand">
-                  {company.logo
-                    ? <img src={company.logo} alt={`${company.name} logo`} className={company.logoClass} />
-                    : <div className={company.logoClass} aria-label="Entrain Growth Lab logo"><i>ENTRAIN</i><b>GROWTH LAB</b></div>}
+        <div className="home-sectors-layout">
+          <nav className="home-sectors-nav" aria-label="Our sectors">
+            {companies.map((item, index) => (
+              <button key={item.name} className={index === activeCompany ? 'active' : ''} onClick={() => showCompany(index)} aria-current={index === activeCompany ? 'true' : undefined}>
+                <span>{item.category}</span>
+                <small>{item.name}</small>
+              </button>
+            ))}
+          </nav>
+          <div className="home-sector-stage">
+            <div className="home-sector-controls">
+              <button onClick={() => stepCompany(-1)} aria-label="Previous section"><ArrowLeft size={19} /></button>
+              <button onClick={() => stepCompany(1)} aria-label="Next section"><ArrowRight size={19} /></button>
+            </div>
+            <AnimatePresence mode="wait" custom={slideDirection}>
+              <motion.article
+                className="home-sector-slide"
+                key={company.name}
+                initial={{ opacity: 0, x: slideDirection * 80 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: slideDirection * -80 }}
+                transition={{ duration: .48, ease: [0.22, 1, 0.36, 1] }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={.08}
+                onDragEnd={(_, info) => { if (Math.abs(info.offset.x) > 60) stepCompany(info.offset.x < 0 ? 1 : -1); }}
+              >
+                <div className="home-sector-copy">
+                  <span className="home-company-category">{company.category}</span>
+                  <div className="home-company-brand">
+                    {company.logo
+                      ? <img src={company.logo} alt={`${company.name} logo`} className={company.logoClass} />
+                      : <div className={company.logoClass} aria-label="Entrain Growth Lab logo"><i>ENTRAIN</i><b>GROWTH LAB</b></div>}
+                  </div>
+                  <h3>{company.name}</h3>
+                  <p>{company.description}</p>
+                  {company.url ? (
+                    <a className="home-company-link" href={company.url}>{company.cta} <ArrowRight size={16} /></a>
+                  ) : (
+                    <button className="home-company-link" onClick={() => onNavigate(company.view)}>{company.cta} <ArrowRight size={16} /></button>
+                  )}
                 </div>
-                <span className="home-company-category">{company.category}</span>
-                <h3>{company.name}</h3>
-                <p>{company.description}</p>
-              </div>
-              {company.url ? (
-                <a className="home-company-link" href={company.url}>
-                  {company.cta} <ArrowRight size={16} />
-                </a>
-              ) : (
-                <button onClick={() => onNavigate(company.view)}>{company.cta} <ArrowRight size={16} /></button>
-              )}
-            </motion.article>
-          ))}
+                <div className="home-sector-image-wrap">
+                  <img src={company.image} alt="" className="home-sector-image" />
+                  <span className="home-sector-index">0{activeCompany + 1}</span>
+                </div>
+              </motion.article>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
