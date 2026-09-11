@@ -63,7 +63,8 @@ const companies = [
     logoClass: 'home-company-wordmark',
     image: '/images/growth-lab-team.png',
     cta: 'Coming Soon / Learn More',
-    view: 'growth-lab',
+    url:'https://www.entraingrowthpartners.com/'
+    // view: 'growth-lab',
   },
 ];
 
@@ -116,6 +117,12 @@ export const HomeView = ({ onNavigate }) => {
       <div className="home-reference-glow" aria-hidden="true" />
       <div className="home-reference-frame">
         <motion.div className="home-reference-main" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .85 }}>
+          <div className="home-hero-brand-badge">
+            <div className="home-hero-brand-icon">
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" />
+            </div>
+            <span>ENTRAIN EDUHUB</span>
+          </div>
           <h1>Real Experience.<br /><span>Real Skills. Real Growth.</span></h1>
           <p>{COMPANY_INFO.tagline} {COMPANY_INFO.overview}</p>
           <div className="home-academy-actions">
@@ -134,6 +141,12 @@ export const HomeView = ({ onNavigate }) => {
       </div>
       <div className="home-academy-shell home-about-grid">
         <Reveal className="home-about-copy">
+          <div className="home-section-badge">
+            <div className="home-section-badge-icon">
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" />
+            </div>
+            <span>ABOUT ENTRAIN EDUHUB</span>
+          </div>
           <h2>About Entrain EduHub</h2>
           <p>{COMPANY_INFO.overview}</p>
           <p>{COMPANY_INFO.details}</p>
@@ -146,6 +159,12 @@ export const HomeView = ({ onNavigate }) => {
     <section id="companies" className="home-companies">
       <div className="home-academy-shell">
         <Reveal className="home-companies-heading">
+          <div className="home-section-badge" style={{ justifyContent: 'center', marginBottom: '14px' }}>
+            <div className="home-section-badge-icon">
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" />
+            </div>
+            <span>OUR SECTORS &amp; VENTURES</span>
+          </div>
           <h2>Our Sectors</h2>
           <p>Explore our specialized sectors across culinary arts, digital marketing education, and organic business growth.</p>
         </Reveal>
@@ -192,7 +211,7 @@ export const HomeView = ({ onNavigate }) => {
                   )}
                 </div>
                 <div className="home-sector-image-wrap">
-                  <img src={company.image} alt="" className="home-sector-image" />
+                  <img src={company.image} alt={company.name} className="home-sector-image" />
                   <span className="home-sector-index">0{activeCompany + 1}</span>
                 </div>
               </motion.article>
@@ -207,6 +226,12 @@ export const HomeView = ({ onNavigate }) => {
     <section className="home-mission">
       <div className="home-academy-shell">
         <Reveal>
+          <div className="home-mission-brand">
+            <div className="home-mission-logo-box">
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Emblem" />
+            </div>
+            <span className="home-mission-brand-label">OUR CORE PHILOSOPHY</span>
+          </div>
           <blockquote>&ldquo;{MISSION.statement}&rdquo;</blockquote>
         </Reveal>
       </div>

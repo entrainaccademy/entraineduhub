@@ -2398,6 +2398,18 @@
 .home-reference-glow { position: absolute; z-index: -2; left: -10%; right: -10%; bottom: -260px; height: 580px; background: radial-gradient(ellipse at 50% 100%, #d5aa55 0%, #c4933e 24%, rgba(196,147,62,.5) 43%, rgba(7,21,42,0) 70%); filter: blur(22px); opacity: .95; }
 .home-reference-frame { position: relative; width: min(100%, 1020px); text-align: center; }
 .home-reference-main { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; }
+.home-hero-brand-badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px 6px 8px; margin-bottom: 24px; border-radius: 9999px; background: rgba(196,147,62,.14); border: 1px solid rgba(196,147,62,.35); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,.25); }
+.home-hero-brand-icon { width: 28px; height: 34px; display: flex; align-items: center; justify-content: center; padding: 2px 4px; border-radius: 8px; background: #F1EDE4; box-shadow: 0 2px 8px rgba(0,0,0,.18); flex-shrink: 0; }
+.home-hero-brand-icon img { width: 18px; height: 28px; object-fit: contain; }
+.home-hero-brand-badge span { color: #f4d48d; font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.home-section-badge { display: inline-flex; align-items: center; gap: 9px; padding: 4px 12px 4px 6px; margin-bottom: 16px; border-radius: 9999px; background: rgba(196,147,62,.12); border: 1px solid rgba(196,147,62,.28); }
+.home-section-badge-icon { width: 22px; height: 26px; display: flex; align-items: center; justify-content: center; padding: 2px; border-radius: 6px; background: #F1EDE4; box-shadow: 0 2px 6px rgba(0,0,0,.12); flex-shrink: 0; }
+.home-section-badge-icon img { width: 14px; height: 22px; object-fit: contain; }
+.home-section-badge span { color: #9b6a27; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.home-mission-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
+.home-mission-logo-box { width: 42px; height: 52px; display: flex; align-items: center; justify-content: center; padding: 4px 5px; border-radius: 12px; background: #F1EDE4; box-shadow: 0 4px 16px rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.4); }
+.home-mission-logo-box img { width: 28px; height: 44px; object-fit: contain; }
+.home-mission-brand-label { color: var(--home-gold); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
 .home-reference-main .home-academy-eyebrow { justify-content: center; margin-bottom: 17px; }
 .home-reference-main h1 { margin: 0; color: #f5f0e7; font-size: clamp(43px, 5vw, 66px); font-weight: 580; line-height: 1.06; letter-spacing: -.04em; }
 .home-reference-main h1 span { color: #c4933e; }

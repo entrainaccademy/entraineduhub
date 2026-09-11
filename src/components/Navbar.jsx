@@ -4,7 +4,7 @@ import { Menu, X, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 const COMPANIES_DROPDOWN = [
   { id: 'academy', label: 'Entrain Academy', url: 'https://www.entraincullinaryschool.com/' },
   { id: 'lab', label: 'Entrain Lab', url: 'https://www.theentrainlabs.com/' },
-  { id: 'growth-lab', label: 'Entrain Growth Lab' },
+  { id: 'growth-lab', label: 'Entrain Growth Partners', url: 'https://www.entraingrowthpartners.com/' },
 ];
 
 const FLAT_NAV = [

@@ -29,13 +29,26 @@ export const ContactView = () => {
     <section id="contact" className="home-contact-section">
       <div className="home-contact-shell">
         <header className="home-contact-heading">
-          <h2>Get in Touch</h2>
+          <div>
+            <div className="home-section-badge" style={{ marginBottom: '12px' }}>
+              <div className="home-section-badge-icon">
+                <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" />
+              </div>
+              <span>DIRECT INQUIRY</span>
+            </div>
+            <h2>Get in Touch</h2>
+          </div>
           <p>Contact Entrain EduHub or reach out to individual ventures, Entrain Academy, Entrain Lab, or Entrain Growth Lab.</p>
         </header>
 
         <div className="home-contact-grid">
           <aside className="home-contact-details">
-            <h3>Corporate Contact Details</h3>
+            <div className="contact-details-header" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+              <div style={{ width: '28px', height: '34px', background: '#F1EDE4', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub" style={{ width: '18px', height: '28px', objectFit: 'contain' }} />
+              </div>
+              <h3 style={{ margin: 0 }}>Corporate Contact Details</h3>
+            </div>
             {details.map(({ icon: Icon, label, value }) => (
               <div key={label}>
                 <Icon size={17} />

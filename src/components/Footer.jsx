@@ -15,6 +15,12 @@ export const Footer = ({ setActiveView }) => {
 
   return (
     <footer className="entrain-footer">
+      <div className="entrain-footer-brand-emblem" style={{ display: 'flex', justifyContent: 'center', marginBottom: '-10px', position: 'relative', zIndex: 2 }}>
+        <div style={{ width: '48px', height: '58px', background: '#F1EDE4', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px 6px', boxShadow: '0 8px 24px rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.4)' }}>
+          <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" style={{ width: '32px', height: '48px', objectFit: 'contain' }} />
+        </div>
+      </div>
+
       <div className="entrain-footer-wordmark" aria-hidden="true">
         <motion.span
           initial={{ y: 100, opacity: 0 }}

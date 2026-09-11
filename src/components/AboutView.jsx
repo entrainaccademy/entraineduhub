@@ -39,11 +39,6 @@ export const BuildingSketch = () => (
   </motion.svg>
 );
 
-const reveal = {
-  hidden: { opacity: 0, y: 38 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
-};
-
 const storyReveal = {
   hidden: (index) => ({
     opacity: 0,
@@ -67,6 +62,17 @@ export const AboutView = () => (
     <section className="about-sketch-hero">
       <div className="about-shell about-sketch-layout">
         <div className="about-sketch-copy">
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '5px 14px 5px 6px', background: 'rgba(196,147,62,0.12)', border: '1px solid rgba(196,147,62,0.3)', borderRadius: '999px', marginBottom: '22px' }}
+          >
+            <div style={{ width: '24px', height: '28px', background: '#F1EDE4', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px', boxShadow: '0 2px 6px rgba(0,0,0,0.1)' }}>
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain EduHub Logo" style={{ width: '16px', height: '24px', objectFit: 'contain' }} />
+            </div>
+            <span style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '0.14em', color: '#c4933e' }}>ENTRAIN EDUHUB STORY</span>
+          </motion.div>
           <h1>
             <span>
               <motion.i

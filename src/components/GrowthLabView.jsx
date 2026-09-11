@@ -78,7 +78,9 @@ export const GrowthLabView = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: .65 }}
           >
-            <span>en</span>
+            <div style={{ width: '36px', height: '44px', background: '#F1EDE4', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3px 4px', boxShadow: '0 4px 14px rgba(0,0,0,0.3)', flexShrink: 0 }}>
+              <img src="/images/entraineduhub-navbar.png" alt="Entrain Growth Lab" style={{ width: '24px', height: '36px', objectFit: 'contain' }} />
+            </div>
             <div><strong>Entrain</strong><small>Growth Lab</small></div>
           </motion.div>
 
